@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row column col-12">
+
+    <div class="jumbotron text-center">
+      <h1 style="font-weight:600">Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <!-- Mars Information -->
+    
+    <div class="container">
+      <div class="row">
+        <div class="column col-12">
+          <h2 class="heading" style="font-weight:600">Latest Mars News</h2>
+          <h4 class="heading" style="font-weight:600;">{{NASA_mars_news.title}}</h4>
+          <p>{{NASA_mars_news.paragraph}}</p>
+          <br>
+        </div>
+      
+    
+      <div class="row">
+        
+        <div class="col-lg-7 col-md-12">
+          <h2 style="font-weight:600">Featured Mars Image</h2>
+          <img src={{NASA_mars_news.img}} />
+  
+        </div>
+        <div class="col-lg-5 col-md-12">
+          <h2 class="heading text-left" style="font-weight:600">Mars Facts</h2>
+          <table class="fixed" width:20px>{{NASA_mars_news.table | safe }}</table>
+        </div>
+  
+    
+      <div class="row">
+  
+        <div class="column col-lg-12">
+          <br>
+          <h2 class="heading text-center" style="font-weight:600">Mars Hemispheres</h2>
+          
+            {% for item in NASA_mars_news.hemisphere%}
+            <div class="col-md-12 col-lg-3">  
+              <div class="panel panel-default">
+                
+                <div class="panel-body">
+                    <img class="img-fluid" style="max-height:100%; max-width: 100%;" src="{{item['img_url']}}"}}>
+                    <figcaption style="font-weight:600; font-size:23px; padding-top: 1em;">{{item['title']}}</figcaption>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          
+        </div>
+      </div>  
+    </div> 
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+  
+</body>
+
+</html>
+
