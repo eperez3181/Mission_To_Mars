@@ -22,7 +22,7 @@ def scrape():
     browser =init_browser()
     NASA_mars_news = {}
 
-    # Mars News info: url to scrap
+    # Mars News info: url to scrape
     url = "https://redplanetscience.com/"
     # Call visit on our browser and pass in the URL we want to scrape   
     browser.visit(url)
@@ -36,14 +36,14 @@ def scrape():
     # Create a Beautiful Soup object, pass in our HTML, and call 'html.parser'
     soup = BeautifulSoup(html, "html.parser")
 
-    # Build our dictionary for the headline, price, and neighborhood from our scraped data
+    # Build our dictionary for news title and paragraph from our scraped data
     news_title = soup.find('div', class_='content_title').text
     news_p = soup.find('div', class_='article_teaser_body').text
     NASA_mars_news["title"] = news_title
     NASA_mars_news["paragraph"]= news_p
 
 
-    # Scrap Mars featured image
+    # Scrape Mars featured image
     url2 = 'https://spaceimages-mars.com/'
     browser.visit(url2)
     time.sleep(1)
@@ -54,7 +54,7 @@ def scrape():
     NASA_mars_news["img"]= featured_image_url
 
 
-    # Scrap Mars facts
+    # Scrape Mars facts
     url3 = 'https://galaxyfacts-mars.com/'
     tables = pd.read_html(url3)
     df= tables[0]
@@ -69,7 +69,7 @@ def scrape():
     NASA_mars_news["table"] = html_table.replace('\n', '').replace("text-align: right;", "text-align: left;")
 
 
-    # Scrap Mars Hemispheres
+    # Scrape Mars Hemispheres
     url4 = 'https://marshemispheres.com'
     browser.visit(url4)
     time.sleep(1)
